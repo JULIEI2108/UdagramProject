@@ -18,65 +18,61 @@ spec:
       - name: backend-feed
         image: juliejin/udagram-api-feed:v1
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         env:
         - name: POSTGRES_DB
           valueFrom:
             configMapKeyRef:
-              name: env-configmap
+              name: env-config
               key: POSTGRES_DB
         - name: POSTGRES_HOST
           valueFrom:
             configMapKeyRef:
-              name: env-configmap
+              name: env-config
               key: POSTGRES_HOST
         - name: AWS_BUCKET
           valueFrom:
             configMapKeyRef:
-              name: env-configmap
+              name: env-config
               key: AWS_BUCKET
         - name: AWS_REGION
           valueFrom:
             configMapKeyRef:
-              name: env-configmap
+              name: env-config
               key: AWS_REGION
         - name: AWS_PROFILE
           valueFrom:
             configMapKeyRef:
-              name: env-configmap
+              name: env-config
               key: AWS_PROFILE
         - name: JWT_SECRET
           valueFrom:
             configMapKeyRef:
-              name: env-configmap
+              name: env-config
               key: JWT_SECRET
         - name: URL
           valueFrom:
             configMapKeyRef:
-              name: env-configmap
+              name: env-config
               key: URL
-        - name: POSTGRES_USERNAME
+        - name: PORT
           valueFrom:
             configMapKeyRef:
+              name: env-config
+              key: PORT
+        - name: POSTGRES_USERNAME
+          valueFrom:
+            secretKeyRef:
               name: env-secret
               key: POSTGRES_USERNAME
         - name: POSTGRES_PASSWORD
           valueFrom:
-            configMapKeyRef:
+            secretKeyRef:
               name: env-secret
               key: POSTGRES_PASSWORD
-        - name: AWS_ACCESS_KEY
+        - name: credentials
           valueFrom:
-            configMapKeyRef:
+            secretKeyRef:
               name: aws-secret
-              key: AWS_ACCESS_KEY
-        - name: AWS_SECRET_ACCESS_KEY
-          valueFrom:
-            configMapKeyRef:
-              name: aws-secret
-              key: AWS_SECRET_ACCESS_KEY
-        - name: AWS_SESSION_TOKEN
-          valueFrom:
-            configMapKeyRef:
-              name: aws-secret
-              key: AWS_SESSION_TOKEN
+              key: credentials
+
