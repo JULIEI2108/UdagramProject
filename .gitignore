@@ -32,6 +32,7 @@ postgres_dev/
 logfile
 aws-secret.yaml
 env-secret.yaml
+comandline
 
 .DS_Store
 Thumbs.db
