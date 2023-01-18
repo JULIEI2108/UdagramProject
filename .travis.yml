@@ -23,4 +23,5 @@ script:
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - echo 'dockerhub credentials configured'
   - docker-compose -f docker-compose-build.yaml push
