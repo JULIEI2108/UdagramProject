@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: reverseproxy
-        image: juliejin/reverseproxy:v1
+        image: juliejin/reverseproxy:v2
         ports:
         - containerPort: 8080
 
