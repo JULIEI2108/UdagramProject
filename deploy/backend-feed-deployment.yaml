@@ -4,6 +4,8 @@ metadata:
   name: backend-feed
   labels:
     app: backend-feed
+  namespace: default
+  selfLink: /api/v1/namespaces/default/services/backend-feed
 spec:
   replicas: 1
   selector:

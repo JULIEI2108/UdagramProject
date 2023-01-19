@@ -8,6 +8,6 @@ data:
   AWS_PROFILE: default
   JWT_SECRET: testing
   URL: http://app_id.us-east-1.elb.amazonaws.com:8080
-  PORT: "8000"
+  PORT: "80"
 metadata:
   name: env-config

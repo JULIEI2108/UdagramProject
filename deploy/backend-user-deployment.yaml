@@ -4,6 +4,8 @@ metadata:
   name: backend-user
   labels:
     app: backend-user
+  namespace: default
+  selfLink: /api/v1/namespaces/default/services/backend-user
 spec:
   replicas: 1
   selector:
