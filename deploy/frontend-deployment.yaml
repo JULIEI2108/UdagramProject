@@ -5,7 +5,7 @@ metadata:
   labels:
     app: frontend
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: frontend
@@ -17,8 +17,15 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: juliejin/udagram-frontend:v2
-        imagePullPolicy: Always 
+        image: juliejin/udagram-frontend:v3
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"   
         ports:
         - containerPort: 80
         resources:

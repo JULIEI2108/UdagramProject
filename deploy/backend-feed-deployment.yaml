@@ -4,8 +4,6 @@ metadata:
   name: backend-feed
   labels:
     app: backend-feed
-  namespace: default
-  selfLink: /api/v1/namespaces/default/services/backend-feed
 spec:
   replicas: 1
   selector:
@@ -19,6 +17,13 @@ spec:
       containers:
       - name: backend-feed
         image: juliejin/udagram-api-feed:v1
+        resources:
+          requests:
+            memory: "4092Mi"
+            cpu: "500m"
+          limits:
+            memory: "4092Mi"
+            cpu: "500m"   
         ports:
         - containerPort: 8080
         env:
@@ -72,9 +77,13 @@ spec:
             secretKeyRef:
               name: env-secret
               key: POSTGRES_PASSWORD
-        - name: credentials
-          valueFrom:
-            secretKeyRef:
-              name: aws-secret
-              key: credentials
-
+        volumeMounts:
+        - name: aws-secret
+          mountPath: "/root/.aws/"
+          readOnly: true
+      restartPolicy: Always
+      volumes:
+      - name: aws-secret
+        secret:
+          secretName: aws-secret
+      
